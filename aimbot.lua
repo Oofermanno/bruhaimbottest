@@ -29,12 +29,12 @@ ImageLabel.ZIndex = 300000000
 ImageLabel.Image = "http://www.roblox.com/asset/?id=6652785273"
 ImageLabel.ImageTransparency = 0.300
 ScreenGui.ResetOnSpawn = false
-print("Script Injected")
+print("Script Hooked")
 function getClosestVisible()
     print("doing")
     local closestDist = math.huge
     local closestPlayer = nil
-    for i,v in pairs(game.Players:GetChildren()) do
+    for i,v in pairs(game.Players:GetPlayers()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team then
             print(v.Name)
             print("Check 1")
