@@ -69,22 +69,23 @@ function getClosestVisible()
     local closestPlayer = nil
     for i,v in pairs(game.Players:GetPlayers()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team and v.Team ~= "Neutral" then
-            if v.Character and v.Character.Humanoid and v.Character.Humanoid.Health > 0 then
+            if v.Character and v.Character.Humanoid and v.Character.Humanoid.Health > 0 and v.Character.HumanoidRootPart then
             print(v.Name)
             print("Check 1")
             local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
             print(dist)
             if dist < closestDist then
                 print("Check 2")
-closetDist = dist
-closestPlayer = v
+
           targeting.Text = "TARGETING: "..v.Name
 
        print("bro")
-    --    if hitPart.Parent.Name == v.Name then
+ local raycastResult = workspace:Raycast(game.Playes.LocalPlayer.Character.Head.Position,v.Character.Head.Position)
+ if raycastResult and raycastResult.Instance and raycastResult.Instance.Parent.Name = v.Name then
         print("Finished Checking, Meets All Requirements!")
-
-
+        closestDist = dist
+        closestPlayer = v
+ end
             end
         end
     end
