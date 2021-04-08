@@ -31,7 +31,7 @@ ImageLabel.ImageTransparency = 0.300
 print("Script Injected")
 function getClosestVisible()
     print("doing")
-    local closestDist = 500
+    local closestDist = math.huge
     local closestPlayer = nil
     for i,v in pairs(game.Players:GetChildren()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team then
