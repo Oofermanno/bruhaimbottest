@@ -28,6 +28,7 @@ ImageLabel.Size = UDim2.new(0, 100, 0, 100)
 ImageLabel.ZIndex = 300000000
 ImageLabel.Image = "http://www.roblox.com/asset/?id=6652785273"
 ImageLabel.ImageTransparency = 0.300
+ScreenGui.ResetOnSpawn = false
 print("Script Injected")
 function getClosestVisible()
     print("doing")
