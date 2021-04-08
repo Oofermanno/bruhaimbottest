@@ -212,7 +212,6 @@ for i, v in pairs(game.Players:GetChildren()) do
     lines.Tracer.Thickness = Tracer_Thickness
     lines.Tracer.Transparency = Tracer_Transparency
 
-    --// Updates ESP (lines) in render loop
     local function ESP()
         local connection
         connection = game:GetService("RunService").RenderStepped:Connect(function()
@@ -220,7 +219,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                 local pos, vis = camera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
                 if vis then
                     local Scale = v.Character.Head.Size.Y/2
-                    local Size = Vector3.new(2, 3, 1.5) * (Scale * 2) -- Change this for different box size
+                    local Size = Vector3.new(2, 3, 1.5) * (Scale * 2)
 
                     local Top1 = camera:WorldToViewportPoint((v.Character.HumanoidRootPart.CFrame * CFrame.new(-Size.X, Size.Y, -Size.Z)).p)
                     local Top2 = camera:WorldToViewportPoint((v.Character.HumanoidRootPart.CFrame * CFrame.new(-Size.X, Size.Y, Size.Z)).p)
@@ -245,7 +244,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                     lines.line4.From = Vector2.new(Top4.X, Top4.Y)
                     lines.line4.To = Vector2.new(Top1.X, Top1.Y)
 
-                    --// Bottom:
+                   
                     lines.line5.From = Vector2.new(Bottom1.X, Bottom1.Y)
                     lines.line5.To = Vector2.new(Bottom2.X, Bottom2.Y)
 
@@ -258,7 +257,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                     lines.line8.From = Vector2.new(Bottom4.X, Bottom4.Y)
                     lines.line8.To = Vector2.new(Bottom1.X, Bottom1.Y)
 
-                    --//S ides:
+                  
                     lines.line9.From = Vector2.new(Bottom1.X, Bottom1.Y)
                     lines.line9.To = Vector2.new(Top1.X, Top1.Y)
 
@@ -271,7 +270,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                     lines.line12.From = Vector2.new(Bottom4.X, Bottom4.Y)
                     lines.line12.To = Vector2.new(Top4.X, Top4.Y)
 
-                    --// Tracer:
+                    
                     if Tracers then
                         local trace = camera:WorldToViewportPoint((v.Character.HumanoidRootPart.CFrame * CFrame.new(0, -Size.Y, 0)).p)
 
@@ -279,7 +278,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                         lines.Tracer.To = Vector2.new(trace.X, trace.Y)
                     end
 
-                    --// Teamcheck:
+                 
                     if Team_Check then
                         if v.TeamColor == player.TeamColor then
                             for u, x in pairs(lines) do
@@ -292,7 +291,7 @@ for i, v in pairs(game.Players:GetChildren()) do
                         end
                     end
 
-                    --// Autothickness:
+                    
                     if Autothickness then
                         local distance = (player.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
                         local value = math.clamp(1/distance*100, 0.1, 4) --0.1 is min thickness, 6 is max
