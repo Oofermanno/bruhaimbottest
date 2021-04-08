@@ -48,7 +48,7 @@ closetDist = dist
     --    if hitPart.Parent.Name == v.Name then
         print("Finished Checking, Meets All Requirements!")
 closestPlayer = v
-
+    return closestPlayer
       ---  end
         end
     end
