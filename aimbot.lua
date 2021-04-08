@@ -29,7 +29,7 @@ ImageLabel.Image = "http://www.roblox.com/asset/?id=6652785273"
 ImageLabel.ImageTransparency = 0.300
 ScreenGui.ResetOnSpawn = false
 syn.protect_gui(ScreenGui)
-ScreenGui.Parent = game:GetService("CoreGUI")
+ScreenGui.Parent = game:GetService("CoreGui")
 print("Script Injected")
 function getClosestVisible()
     print("doing")
