@@ -77,14 +77,17 @@ function getClosestVisible()
             if dist < closestDist then
                 print("Check 2")
 
-          targeting.Text = "TARGETING: "..v.Name
+          
 
        print("bro")
- local raycastResult = workspace:Raycast(game.Playes.LocalPlayer.Character.Head.Position,v.Character.Head.Position)
- if raycastResult and raycastResult.Instance and raycastResult.Instance.Parent.Name = v.Name then
+       local newCF = CFrame.new(game.Players.LocalPlayer.Character.Head.Position,v.Character.Head.Position)
+ local raycastResult = workspace:Raycast(game.Players.LocalPlayer.Character.Head.Position,newCF.LookVector * dist)
+ if raycastResult and raycastResult.Instance and raycastResult.Instance.Parent.Name == v.Name then
         print("Finished Checking, Meets All Requirements!")
+        targeting.Text = "TARGETING: "..v.Name
         closestDist = dist
         closestPlayer = v
+
  end
             end
         end
