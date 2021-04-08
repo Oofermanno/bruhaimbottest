@@ -5,7 +5,6 @@ local TextLabel = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
 
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -29,6 +28,8 @@ ImageLabel.ZIndex = 300000000
 ImageLabel.Image = "http://www.roblox.com/asset/?id=6652785273"
 ImageLabel.ImageTransparency = 0.300
 ScreenGui.ResetOnSpawn = false
+syn.protect_gui(ScreenGui)
+ScreenGui.Parent = game:GetService("CoreGUI")
 print("Script Injected")
 function getClosestVisible()
     print("doing")
@@ -42,7 +43,7 @@ function getClosestVisible()
             print(dist)
             print(closestDist)
             writefile("C:\Users\ashle\Documents\Synapse-X\workspace\aimbotlogs.txt",tostring(dist.."/"..closestDist))
-            if dist <= closestDist then
+            if dist < closestDist then
                 closestDist = dist
                 print("Check 2")
 
@@ -51,9 +52,9 @@ function getClosestVisible()
        print("bro")
     --    if hitPart.Parent.Name == v.Name then
         print("Finished Checking, Meets All Requirements!")
-         local closestPlayer = nil
+        
 closestPlayer = v
-
+return closestPlayer
       ---  end
         end
     end
