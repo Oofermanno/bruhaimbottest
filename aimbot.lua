@@ -73,10 +73,10 @@ function getClosestVisible()
     for i,v in pairs(game.Players:GetPlayers()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team and v.Team ~= "Neutral" then
             if v.Character and v.Character.Humanoid and v.Character.Humanoid.Health > 0 and v.Character.HumanoidRootPart then
-            print(v.Name)
+           
    
             local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
-            print(dist)
+            
             if dist < closestDist then
              
 
