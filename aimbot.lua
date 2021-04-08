@@ -71,7 +71,7 @@ if input.UserInputType == Enum.UserInputType.MouseButton2 then
         local CurrentCamera = game.workspace.CurrentCamera
 
 CurrentCamera.CFrame = CFrame.new(CurrentCamera.CFrame.Position,getClosestVisible().Character.Head.Position)
-
+local closestPlayer = nil
 if _G.aim == false then return end
     
     end
