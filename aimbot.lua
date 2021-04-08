@@ -5,6 +5,7 @@ local TextLabel = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
 
 
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 TextLabel.Parent = ScreenGui
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -27,13 +28,10 @@ ImageLabel.Size = UDim2.new(0, 100, 0, 100)
 ImageLabel.ZIndex = 300000000
 ImageLabel.Image = "http://www.roblox.com/asset/?id=6652785273"
 ImageLabel.ImageTransparency = 0.300
-ScreenGui.ResetOnSpawn = false
-syn.protect_gui(ScreenGui)
-ScreenGui.Parent = game:GetService("CoreGui")
 print("Script Injected")
 function getClosestVisible()
     print("doing")
-    local closestDist = math.huge
+    local closestDist = 500
     local closestPlayer = nil
     for i,v in pairs(game.Players:GetChildren()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team then
@@ -41,20 +39,16 @@ function getClosestVisible()
             print("Check 1")
             local dist = (game.Players.LocalPlayer.Character.Head.Position - v.Character.HumanoidRootPart.Position).magnitude
             print(dist)
-            print(closestDist)
-            writefile("C:\Users\ashle\Documents\Synapse-X\workspace\aimbotlogs.txt",tostring(dist.."/"..closestDist))
             if dist < closestDist then
-                closestDist = dist
                 print("Check 2")
-
+closetDist = dist
            
           
        print("bro")
     --    if hitPart.Parent.Name == v.Name then
         print("Finished Checking, Meets All Requirements!")
-        
 closestPlayer = v
-return closestPlayer
+
       ---  end
         end
     end
@@ -76,7 +70,7 @@ if input.UserInputType == Enum.UserInputType.MouseButton2 then
         local CurrentCamera = game.workspace.CurrentCamera
 
 CurrentCamera.CFrame = CFrame.new(CurrentCamera.CFrame.Position,getClosestVisible().Character.Head.Position)
- local closestPlayer = nil
+
 if _G.aim == false then return end
     
     end
