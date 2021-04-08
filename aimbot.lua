@@ -469,4 +469,6 @@ game.Players.PlayerAdded:Connect(function(newplr)
     end
     coroutine.wrap(ESP)()
 end)
+   else
+   print("Already Injected, Cancelling Injection")
 end
