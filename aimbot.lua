@@ -62,28 +62,30 @@ viewportcamera.CameraType = Enum.CameraType.Scriptable
 local viewportpoint = Vector3.new(0,0,0)
 viewportshow.CurrentCamera = viewportcamera
 local viewmod = nil
+local raycastParams = RaycastParams.new()
+raycastParams.FilterDescendantsInstances = {game.Players.LocalPlayer.Character}
+raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
 print("Script Hooked")
 function getClosestVisible()
-    print("doing")
+
     local closestDist = math.huge
     local closestPlayer = nil
     for i,v in pairs(game.Players:GetPlayers()) do
         if v ~= game.Players.LocalPlayer and v.Team ~= game.Players.LocalPlayer.Team and v.Team ~= "Neutral" then
             if v.Character and v.Character.Humanoid and v.Character.Humanoid.Health > 0 and v.Character.HumanoidRootPart then
             print(v.Name)
-            print("Check 1")
+   
             local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
             print(dist)
             if dist < closestDist then
-                print("Check 2")
+             
 
           
 
-       print("bro")
        local newCF = CFrame.new(game.Players.LocalPlayer.Character.Head.Position,v.Character.Head.Position)
- local raycastResult = workspace:Raycast(game.Players.LocalPlayer.Character.Head.Position,newCF.LookVector * dist)
+ local raycastResult = workspace:Raycast(game.Players.LocalPlayer.Character.Head.Position,newCF.LookVector * (dist*2),raycastParams)
  if raycastResult and raycastResult.Instance and raycastResult.Instance.Parent.Name == v.Name then
-        print("Finished Checking, Meets All Requirements!")
+    
         targeting.Text = "TARGETING: "..v.Name
         closestDist = dist
         closestPlayer = v
@@ -99,7 +101,7 @@ end
     UIS.InputBegan:Connect(function(input,gameProcessed)
         
 if input.UserInputType == Enum.UserInputType.MouseButton2 then
-    print("bruh")
+
 
     _G.aim = true
  
@@ -119,7 +121,7 @@ if _G.aim == false then return end
 
     UIS.InputEnded:Connect(function(input)
 if input.UserInputType == Enum.UserInputType.MouseButton2 then
-    print("unbruh")
+   
     
 _G.aim = false
 TextLabel.Text = "STATUS: "..tostring(_G.aim)
